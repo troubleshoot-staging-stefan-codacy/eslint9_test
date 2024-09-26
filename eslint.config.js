@@ -14,7 +14,6 @@ const internalPlugin = require("./tools/internal-rules");
 const eslintPluginRulesRecommendedConfig = require("eslint-plugin-eslint-plugin/configs/rules-recommended");
 const eslintPluginTestsRecommendedConfig = require("eslint-plugin-eslint-plugin/configs/tests-recommended");
 const globals = require("globals");
-const eslintConfigESLintCJS = require("eslint-config-eslint/cjs");
 const eslintConfigESLintFormatting = require("eslint-config-eslint/formatting");
 const eslintPluginYml = require("eslint-plugin-yml");
 const json = require("@eslint/json").default;
@@ -71,11 +70,6 @@ function createInternalFilesPatterns(pattern = null) {
 }
 
 module.exports = [
-    ...eslintConfigESLintCJS.map(config => ({
-        ...config,
-        name: `eslint/${config.name}`,
-        files: [ALL_JS_FILES]
-    })),
     {
         ...eslintConfigESLintFormatting,
         name: "eslint/formatting",
